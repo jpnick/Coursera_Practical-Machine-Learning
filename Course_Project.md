@@ -11,7 +11,7 @@ output:
 
 ***
 
-##Background
+## Background
 
 Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. In this project, your goal will be to use data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the [website](http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har) (see the section on the Weight Lifting Exercise Dataset).
 
@@ -23,9 +23,9 @@ The data for this project come from this [source](http://web.archive.org/web/201
 
 ***
 
-##Data Processing
+## Data Processing
 
-###Libraries
+### Libraries
 
 
 ```r
@@ -37,7 +37,7 @@ library(randomForest)
 library(gbm)
 ```
 
-###Read data
+### Read data
 
 
 ```r
@@ -167,7 +167,7 @@ str(train.raw)
 ##   [list output truncated]
 ```
 
-###Clean Data
+### Clean Data  
 We will remove the variables that contains missing values and the first seven columns that do not contribute much to the  outcome.
 
 ```r
@@ -201,7 +201,7 @@ dim(train.clean)
 ## [1] 19622    53
 ```
 
-###Prepare Data
+### Prepare Data  
 Split `train.clean` into train data (70%) and test data (30%). 
 
 ```r
@@ -224,7 +224,7 @@ dim(test.dat)
 ## [1] 5885   53
 ```
 
-###Correlation
+### Correlation  
 Use findCorrelation function to search for highly correlated predictors
 
 ```r
@@ -245,14 +245,14 @@ names(train.dat)[h.cor]
 
 ***
 
-##Data Modeling
+## Data Modeling  
 
 In the following sections, we will test 3 different models:  
 - Classification tree  
 - Random forest  
 - Gradient boosting method  
 
-###1. Train with Classification tree
+### 1. Train with Classification tree
 
 Estimate
 
@@ -321,7 +321,7 @@ re
 ## 3    GBM
 ```
 
-###2. Train with Random forest
+### 2. Train with Random forest
 
 Estimate
 
@@ -437,7 +437,7 @@ re
 ## 3    GBM
 ```
 
-###3. Train with Gradient boosting method
+### 3. Train with Gradient boosting method
 
 Estimte
 
@@ -537,7 +537,7 @@ cm.gbm
 ## Balanced Accuracy      0.9887   0.9633   0.9668   0.9707   0.9759
 ```
 
-###Train Result
+### Train Result
 The result show that Random forest is the best method compared by the accuracy rate values.
 
 ```r
@@ -554,7 +554,7 @@ re
 
 ***
 
-##Conclusion
+## Conclusion
 > Apply Random forest model to the validation data.
 
 
